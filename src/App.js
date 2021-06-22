@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import UserCollection from './components/UserCollection';
+
+const url = "http://localhost:3000/api/v1/users"
+
+class App extends Component {
+  state = {
+    users: [],
+    filteredUsers: []
+  }
+
+  componentDidMount(){
+    fetch(url)
+    .then(r=>r.json())
+    .then(userData=>this.setState({
+      users:userData
+    }))
+  }
+  render() {
+    return(
+      <>
+        <UserCollection user={this.state.filteredUsers}/>
+      </>
+    )
+  }
 }
 
 export default App;
