@@ -12,7 +12,7 @@ const CategoryCollection = (props) =>{
         return props.category.map(cat => <CategoryCard cat={cat} key={cat.id}/>)
     }
     return (
-        <div id ="user-collection">
+        <div id ="category-collection">
             {renderCategory()}
         </div>
     )

@@ -6,7 +6,7 @@ class NoteCard extends React.Component{
         const {name, description} = this.props.n
         return(
             <div>
-                <div className="CategoryCard">
+                <div className="NoteCard">
                     
                         <h2> {name}, 
                         <br>

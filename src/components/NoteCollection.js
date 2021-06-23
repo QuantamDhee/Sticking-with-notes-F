@@ -7,7 +7,7 @@ const NoteCollection = (props) =>{
         return props.note.map(n => <NoteCard n={n} key={n.id}/>)
     }
     return (
-        <div id ="user-collection">
+        <div id ="note-collection">
             {renderNote()}
         </div>
     )
