@@ -6,9 +6,9 @@ class UserCard extends React.Component{
         return(
             <div>
                 <div className="UserCard">
-                    <li>
-                        <h2> {name}</h2>
-                    </li>
+                    
+                        <h2> {name} </h2>
+                    
                 </div>
             </div>
         )

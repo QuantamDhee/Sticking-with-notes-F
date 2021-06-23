@@ -8,7 +8,7 @@ const url = "http://localhost:3000/api/v1/users"
 class App extends Component {
   state = {
     users: [],
-    filteredUsers: []
+    // filteredUser: []
   }
 
   componentDidMount(){
@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return(
       <>
-        <UserCollection user={this.state.filteredUsers}/>
+        <UserCollection user={this.state.users}/>
       </>
     )
   }
