@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 class UserCard extends React.Component{
     render(){
@@ -7,7 +8,7 @@ class UserCard extends React.Component{
             <div>
                 <div className="UserCard">
                     
-                        <h2> {name} </h2>
+                        <Link to='/' className='user-example' ><h2> {name} </h2></Link>
                     
                 </div>
             </div>
