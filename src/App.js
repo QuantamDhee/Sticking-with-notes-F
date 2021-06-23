@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import './App.css';
 
-import {Route} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 
 import UserCollection from './components/UserCollection';
 import CategoryCollection from './components/CategoryCollection';
+import NoteCollection from './components/NoteCollection';
 
 const url = "http://localhost:3000/api/v1/users"
 
@@ -16,7 +17,7 @@ class App extends Component {
     // filteredUser: []
   }
 
-  //refactor?
+  // //refactor?
   componentDidMount(){
    this.findUser()
    this.findCategory()
@@ -24,7 +25,7 @@ class App extends Component {
   }
 
   findUser(){
-    fetch(url)
+    fetch("http://localhost:3000/api/v1/users")
     .then(r=>r.json())
     .then(userData=>this.setState({
       users:userData,
@@ -47,14 +48,23 @@ class App extends Component {
     }))
   }
 
-  render() {
-    return(
-      <>
-        {/* <CategoryCollection category={this.state.categories}/> */}
-        <UserCollection user={this.state.users}/>
-      </>
-    )
-  }
+  // render() {
+  //   return(
+  //     <>
+  //       {/* <Route path='/categories' render={()=><CategoryCollection category={this.state.categories}/>}/> */}
+  //       <UserCollection user={this.state.users}/>
+  //     </>
+  //   )
+  // }
+ render(){
+   return(
+     <Switch>
+       <Route exact path="/" render={()=> <UserCollection user={this.state.users}/>}/>
+       <Route exact path="/categories/:slug" render={()=><CategoryCollection category={this.state.categories}/>}/>
+       <Route exact path="/categories/:slug/notes" render={()=> <NoteCollection note={this.state.notes}/>}/>
+     </Switch>
+   )
+ }
 }
 
 export default App;

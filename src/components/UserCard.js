@@ -8,7 +8,7 @@ class UserCard extends React.Component{
             <div>
                 <div className="UserCard">
                     
-                        <Link to='/' className='user-example' ><h2> {name} </h2></Link>
+                        <h2> {name} </h2>
                     
                 </div>
             </div>
