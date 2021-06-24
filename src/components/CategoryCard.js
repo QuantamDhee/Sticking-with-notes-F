@@ -8,7 +8,7 @@ class CategoryCard extends React.Component{
             <div>
                 <div className="CategoryCard">
                     
-                        <h2> {name} </h2>
+                <Link to='/categories/:slug/notes' className='category-example' ><h2> {name} </h2></Link>
                     
                 </div>
             </div>
