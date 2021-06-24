@@ -8,12 +8,8 @@ class NoteCard extends React.Component{
             <div>
                 <div className="NoteCard">
                     
-                        <h2> {name}, 
-                        <br>
-                        </br>
-                        {description}
-                        
-                        </h2>
+                        <h2> {name} </h2>
+                        <h3> {description}</h3>
                     
                 </div>
             </div>
