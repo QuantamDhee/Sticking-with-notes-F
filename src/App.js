@@ -68,7 +68,7 @@ class App extends Component {
      <Switch>
        <Route exact path="/" render={()=> <UserCollection user={this.state.users}/>}/>
        <Route exact path="/categories" render={()=><CategoryCollection category={this.state.categories}/>}/>
-       <Route exact path="/notes" render={()=> <NoteCollection note={this.state.notes}/>}/>
+       <Route exact path="/categories/notes" render={()=> <NoteCollection note={this.state.notes}/>}/>
        <Route exact path="/notes/create" render={()=> <NoteForm categories={this.state.categories} addNote={this.addNote}/>}/>
      </Switch>
    )

@@ -1,16 +1,21 @@
 import React from 'react'
 import NoteCard from './NoteCard'
 
-const NoteCollection = (props) =>{
+class NoteCollection extends React.Component{
 
-    const renderNote = () => {
-        return props.note.map(n => <NoteCard n={n} key={n.id}/>)
+    // const renderNote = () => {
+        //     return props.note.map(n => <NoteCard n={n} key={n.id}/>)
+        // }
+    render(){
+        return (
+            <div>
+                {this.props.note.map(n => <NoteCard n={n} key={n.id}/>)}
+                {/* {renderNote()} */}
+            </div>
+        )
     }
-    return (
-        <div id ="note-collection">
-            {renderNote()}
-        </div>
-    )
 }
+
+// className="ui three column grid"
 
 export default NoteCollection
