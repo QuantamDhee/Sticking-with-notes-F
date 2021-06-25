@@ -137,10 +137,16 @@ class App extends Component {
       fetch(deleteUrl, {
         method: "DELETE",
       })
-      this.setState({
-        notes: this.state.notes.filter(note => note !== note)
+      .then(()=>{
+        let notes = this.state.notes
+        let index = notes.indexOf(note)
+        notes.splice(index, 1)
+        this.setState({
+          notes: notes
+        })
       })
     }
+
 
  render(){
    return(
