@@ -1,5 +1,5 @@
 import React from 'react'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 class NoteCard extends React.Component{
     render(){
@@ -14,6 +14,7 @@ class NoteCard extends React.Component{
                     <div className="description">
                         {description}
                     </div>
+                    <button onClick={() => this.props.selectNote(this.props.n)}>EDIT</button>
                 </div>
             </div>
         )

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, withRouter} from 'react-router-dom'
 
 import UserCollection from './components/UserCollection';
 import CategoryCollection from './components/CategoryCollection';
@@ -15,7 +15,7 @@ class App extends Component {
     users: [],
     categories: [],
     notes: [],
-    // filteredUser: []
+    selectedNote: null
   }
 
   // //refactor?
@@ -63,16 +63,53 @@ class App extends Component {
       })
     })
   }
+
+  selectNote = note => {
+    this.setState({
+      selectedNote: note
+    })
+    this.props.history.push(`/note/${note.id}/edit`)
+  }
+
+  updateNote = note => {
+    let configObj = {
+      headers: { "Content-Type": "application/json" },
+      method: "PATCH",
+      body: JSON.stringify(note)
+    }
+    fetch(`http://localhost:3000/api/v1/notes/${this.state.selectedNote.id}`, configObj)
+    .then(r=>r.json())
+    .then(data=>{
+      // console.log(data)
+      this.setState({
+        notes: this.state.notes.map(note => {
+          if(note.id == data.id){
+            return data
+          }else{
+            return note
+          }
+        })
+      })
+    })
+    this.props.history.push("/categories/notes")
+  }
+
  render(){
    return(
      <Switch>
        <Route exact path="/" render={()=> <UserCollection user={this.state.users}/>}/>
+
        <Route exact path="/categories" render={()=><CategoryCollection category={this.state.categories}/>}/>
-       <Route exact path="/categories/notes" render={()=> <NoteCollection note={this.state.notes}/>}/>
-       <Route exact path="/notes/create" render={()=> <NoteForm categories={this.state.categories} addNote={this.addNote}/>}/>
+
+       <Route exact path="/categories/notes" render={()=> <NoteCollection selectNote={this.selectNote} note={this.state.notes}/>}/>
+
+       <Route exact path="/note/:id/edit" render={() => <NoteForm users={this.state.users} categories={this.state.categories} addNote={this.updateNote}/>}/>
+
+       <Route exact path="/notes/create" render={()=> <NoteForm users={this.state.users} categories={this.state.categories} addNote={this.addNote}/>}/>
+
      </Switch>
    )
  }
 }
 
-export default App;
+export default withRouter(App);

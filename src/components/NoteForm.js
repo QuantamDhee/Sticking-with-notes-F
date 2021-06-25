@@ -16,15 +16,18 @@ class NoteForm extends Component{
     }
 
     handleSubmit =e => {
-        console.log("hi")
+        // console.log("hi")
         e.preventDefault()
         this.props.addNote(this.state)
     }
 
-    renderOptions = () => {
+    renderCat = () => {
         return this.props.categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)
     }
-
+    
+    renderUser = () => {
+        return this.props.users.map(u => <option key={u.id} value={u.id}>{u.name}</option>)
+    }
 
     render(){
         return(
@@ -42,7 +45,10 @@ class NoteForm extends Component{
                     </div>
                 </div>
                 <select onChange={this.handleChange} name="category_id" className="ui selection dropdown">
-                    {this.renderOptions()}
+                    {this.renderCat()}
+                </select>
+                <select onChange={this.handleChange} name="user_id" className="ui selection dropdown">
+                    {this.renderUser()}
                 </select>
                 <button type="submit" className="ui submit button">Create Note</button>
             </form>
