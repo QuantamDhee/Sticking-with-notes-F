@@ -1,5 +1,5 @@
 import React from 'react'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 class NoteCard extends React.Component{
 
@@ -11,6 +11,7 @@ class NoteCard extends React.Component{
         const {name, description} = this.props.n
         return(
             <div className="ui link cards">
+                {/* <Link to='/notes/create' className='notes-create'> <button>Create Notes</button></Link> */}
                 <br/>
                 <div className="card">
                     <div className="header">

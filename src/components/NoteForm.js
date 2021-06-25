@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import { Link } from 'react-router-dom'
 
 class NoteForm extends Component{
 
@@ -18,6 +19,10 @@ class NoteForm extends Component{
     handleSubmit =e => {
         // console.log("hi")
         e.preventDefault()
+        this.setState({
+            name: '',
+            description: '',    
+        })
         this.props.addNote(this.state)
     }
 
@@ -52,6 +57,7 @@ class NoteForm extends Component{
                 </select>
                 <button type="submit" className="ui submit button">Create Note</button>
             </form>
+                <Link to='/categories/notes' className='notes-back'> <button>back</button></Link>
             </div>
         )
     }
