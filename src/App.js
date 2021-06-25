@@ -83,7 +83,7 @@ class App extends Component {
       // console.log(data)
       this.setState({
         notes: this.state.notes.map(note => {
-          if(note.id == data.id){
+          if(note.id === data.id){
             return data
           }else{
             return note
@@ -93,6 +93,54 @@ class App extends Component {
     })
     this.props.history.push("/categories/notes")
   }
+  // deleteNote = note => {
+  //   let configObj = {
+  //     method: "Delete",
+  //     headers: { 
+  //       "Content-Type": "application/json" ,
+  //       "Accept": "application/json" 
+  //   },
+
+  //   }
+  //   fetch(`http://localhost:3000/api/v1/notes/${this.state.selectedNote.id}`, configObj)
+  //   .then(r=>r.json())
+  //   .then(data=>{
+  //     // console.log(data)
+  //     this.setState({
+  //       notes: this.state.notes.map(note => {
+  //         if(note.id === data.id){
+  //           return data
+  //         }else{
+  //           return note
+  //         }
+  //       })
+  //     })
+  //   })
+  //   this.props.history.push("/categories/notes")
+  // }
+  //  deleteNote = (note, parentNode) => {
+  //    let configObj = {
+  //     method: "DELETE",
+  //     headers: { 
+  //       "Content-Type": "application/json",
+  //       "Accept": "application/json" 
+  //     },
+
+  //   }
+  //   fetch(`http://localhost:3000/api/v1/notes/${note}`, configObj)
+  //   .then(r => r.json())
+  //   .then(parentNode.remove())
+    //  }
+   
+    deleteNote = note => {
+      let deleteUrl = `http://localhost:3000/api/v1/notes/${note.id}`
+      fetch(deleteUrl, {
+        method: "DELETE",
+      })
+      this.setState({
+        notes: this.state.notes.filter(note => note !== note)
+      })
+    }
 
  render(){
    return(
@@ -101,9 +149,11 @@ class App extends Component {
 
        <Route exact path="/categories" render={()=><CategoryCollection category={this.state.categories}/>}/>
 
-       <Route exact path="/categories/notes" render={()=> <NoteCollection selectNote={this.selectNote} note={this.state.notes}/>}/>
+       <Route exact path="/categories/notes" render={()=> <NoteCollection selectNote={this.selectNote} note={this.state.notes} deleteNote={this.deleteNote}/>}/>
 
-       <Route exact path="/note/:id/edit" render={() => <NoteForm users={this.state.users} categories={this.state.categories} addNote={this.updateNote}/>}/>
+       <Route exact path="/note/:id/edit" render={() => <NoteForm users={this.state.users} categories={this.state.categories} addNote={this.updateNote} />}/>
+
+       {/* <Route exact path="/note/:id/edit" render={() => <NoteForm users={this.state.users} categories={this.state.categories} deleteNote={this.deleteNote}/>}/> */}
 
        <Route exact path="/notes/create" render={()=> <NoteForm users={this.state.users} categories={this.state.categories} addNote={this.addNote}/>}/>
 

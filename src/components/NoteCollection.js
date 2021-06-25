@@ -9,7 +9,7 @@ class NoteCollection extends React.Component{
     render(){
         return (
             <div>
-                {this.props.note.map(n => <NoteCard selectNote={this.props.selectNote} n={n} key={n.id}/>)}
+                {this.props.note.map(n => <NoteCard deleteNote={this.props.deleteNote} selectNote={this.props.selectNote} n={n} key={n.id}/>)}
                 {/* {renderNote()} */}
             </div>
         )
