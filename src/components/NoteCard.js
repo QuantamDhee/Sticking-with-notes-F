@@ -10,8 +10,7 @@ class NoteCard extends React.Component{
     render(){
         const {name, description} = this.props.n
         return(
-            <div className="ui link cards">
-                {/* <Link to='/notes/create' className='notes-create'> <button>Create Notes</button></Link> */}
+            <div className="ui fluid cards">
                 <br/>
                 <div className="card">
                     <div className="header">

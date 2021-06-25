@@ -56,8 +56,8 @@ class NoteForm extends Component{
                     {this.renderUser()}
                 </select>
                 <button type="submit" className="ui submit button">Create Note</button>
+                {/* <Link to='/categories/notes' className='back-button'> <button className= 'ui button'>back</button></Link> */}
             </form>
-                <Link to='/categories/notes' className='notes-back'> <button>back</button></Link>
             </div>
         )
     }
