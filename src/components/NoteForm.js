@@ -1,5 +1,5 @@
 import {Component} from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 class NoteForm extends Component{
 
@@ -50,9 +50,12 @@ class NoteForm extends Component{
                     </div>
                 </div>
                 <select onChange={this.handleChange} name="category_id" className="ui selection dropdown">
+                <option value="" selected disabled hidden>Category</option>
                     {this.renderCat()}
                 </select>
+                <br/>
                 <select onChange={this.handleChange} name="user_id" className="ui selection dropdown">
+                <option value="" selected disabled hidden>User</option>
                     {this.renderUser()}
                 </select>
                 <button type="submit" className="ui submit button">Create Note</button>

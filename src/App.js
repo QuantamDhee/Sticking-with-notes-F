@@ -159,8 +159,6 @@ class App extends Component {
 
        <Route exact path="/note/:id/edit" render={() => <NoteForm users={this.state.users} categories={this.state.categories} addNote={this.updateNote} />}/>
 
-       {/* <Route exact path="/note/:id/edit" render={() => <NoteForm users={this.state.users} categories={this.state.categories} deleteNote={this.deleteNote}/>}/> */}
-
        <Route exact path="/notes/create" render={()=> <NoteForm users={this.state.users} categories={this.state.categories} addNote={this.addNote}/>}/>
 
      </Switch>
